@@ -23,7 +23,7 @@ zend_function_entry myext_functions[] =
 zend_module_entry myext_module_entry = {
     STANDARD_MODULE_HEADER,
     "myext",
-    NULL, /* Function entries */
+    myext_functions, /* Function entries */
     NULL, /* Module init */
     NULL, /* Module shutdown */
     NULL, /* Request init */
