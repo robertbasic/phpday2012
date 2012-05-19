@@ -34,6 +34,10 @@ zend_module_entry myext_module_entry = {
 };
 /* }}} */
 
+/**
+ * this is the C function which will be called by the PHP userland
+ * function (fibonacci), this will be faster than to call the userland always
+ */
 fibonacci_internal(long n)
 {
     switch(n)
@@ -46,6 +50,9 @@ fibonacci_internal(long n)
     return fibonacci_internal(n-2) + fibonacci_internal(n-1);
 }
 
+/* this is the actual PHP function which will be called
+ * from userland
+ */
 PHP_FUNCTION(fibonacci)
 {
     long n;
