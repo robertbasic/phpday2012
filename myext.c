@@ -85,4 +85,12 @@ PHP_FUNCTION(my_dump)
         RETURN_FALSE;
     }
 
+    switch (Z_TYPE_P(myvar)) {
+        case IS_BOOL:
+            php_printf("It's a BOOL!");
+            break;
+        default:
+            php_printf("It's not a BOOL!");
+            break;
+    }
 }
