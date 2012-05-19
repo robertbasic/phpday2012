@@ -16,7 +16,7 @@ zend_function_entry myext_functions[] =
 {
     ZEND_FE(fibonacci, arginfo_fibonacci)
     {NULL,NULL,NULL} /* Here ends the function entries */
-}
+};
 
 /* {{{ myext_module_entry
  */
@@ -33,6 +33,10 @@ zend_module_entry myext_module_entry = {
     STANDARD_MODULE_PROPERTIES
 };
 /* }}} */
+
+#ifdef COMPILE_DL_MYEXT
+ZEND_GET_MODULE(myext)
+#endif
 
 /**
  * this is the C function which will be called by the PHP userland
@@ -65,6 +69,4 @@ PHP_FUNCTION(fibonacci)
     RETURN_LONG(fibonacci_internal(n));
 }
 
-#ifdef COMPILE_DL_MYEXT
-ZEND_GET_MODULE(myext)
-#endif
+
