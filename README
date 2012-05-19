@@ -3,3 +3,8 @@ phpday 2012 PHP extension workshop
 =======================================
 
 Lead by Patrick Allaert and Derick Rethans.
+
+
+The workshop will be using an existing example
+extension, will add the github repo to it as
+upstream. github.com/patrickallaert/PHP_Extension_Workshop
