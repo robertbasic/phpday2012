@@ -12,9 +12,15 @@ ZEND_BEGIN_ARG_INFO(arginfo_fibonacci, 0)
     ZEND_ARG_INFO(0, integer)
 ZEND_END_ARG_INFO(); 
 
+ZEND_BEGIN_ARG_INFO(arginfo_my_dump, 0)
+    ZEND_ARG_INFO(0, zval)
+ZEND_END_ARG_INFO(); 
+
+
 zend_function_entry myext_functions[] = 
 {
     ZEND_FE(fibonacci, arginfo_fibonacci)
+    ZEND_FE(my_dump, arginfo_my_dump)
     {NULL,NULL,NULL} /* Here ends the function entries */
 };
 
@@ -70,3 +76,13 @@ PHP_FUNCTION(fibonacci)
 }
 
 
+PHP_FUNCTION(my_dump)
+{
+    zval *myvar;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "z", &myvar) == FAILURE)
+    {
+        RETURN_FALSE;
+    }
+
+}
