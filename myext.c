@@ -34,6 +34,30 @@ zend_module_entry myext_module_entry = {
 };
 /* }}} */
 
+fibonacci_internal(long n)
+{
+    switch(n)
+    {
+        case 0:
+        case 1:
+            return n;
+    }
+
+    return fibonacci_internal(n-2) + fibonacci_internal(n-1);
+}
+
+PHP_FUNCTION(fibonacci)
+{
+    long n;
+
+    if (zend_parse_parameters(ZEND_NUM_ARGS() TSRMLS_CC, "l", &n) == FAILURE)
+    {
+        RETURN_FALSE;
+    }
+
+    RETURN_LONG(fibonacci_internal(n));
+}
+
 #ifdef COMPILE_DL_MYEXT
 ZEND_GET_MODULE(myext)
 #endif
