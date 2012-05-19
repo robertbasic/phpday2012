@@ -7,6 +7,16 @@
 #include "ext/standard/info.h"
 #include "php_myext.h"
 
+/* arguments for our fibonacci function */
+ZEND_BEGIN_ARG_INFO(arginfo_fibonacci, 0)
+    ZEND_ARG_INFO(0, integer)
+ZEND_END_ARG_INFO(); 
+
+zend_function_entry myext_functions[] = 
+{
+    ZEND_FE(fibonacci, arginfo_fibonacci)
+    {NULL,NULL,NULL} /* Here ends the function entries */
+}
 
 /* {{{ myext_module_entry
  */
